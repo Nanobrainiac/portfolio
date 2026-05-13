@@ -3,11 +3,11 @@ import type { PortfolioData } from "./types";
 export const fallbackData: PortfolioData = {
   profile: {
     id: "fallback-profile",
-    hero_headline: "AI Builder / Full-Stack Developer",
+    hero_headline: "Two Pixels Short",
     hero_subheadline:
-      "I build production-minded internal tools, AI-assisted workflows, and full-stack apps with Next.js, TypeScript, Supabase, OpenAI, and local AI systems.",
+      "A small AI software studio building internal tools, rapid prototypes, automation workflows, and full-stack web apps.",
     about:
-      "I specialize in rapid prototyping, practical automation, and clean full-stack implementation. I use AI tools heavily, but I stay comfortable reading, modifying, and debugging code manually when the tools stop short.",
+      "Two Pixels Short is led by Chris Martindale, an AI Builder and Full-Stack Developer focused on rapid prototyping, practical automation, and clean implementation. AI tools are part of the workflow, but the work stays grounded in manual code review, debugging, and production-minded engineering.",
     resume_url: "",
     featured_video_url: "",
     location: "United States",

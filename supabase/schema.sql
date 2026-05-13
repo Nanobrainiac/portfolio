@@ -47,6 +47,10 @@ create table if not exists projects (
   updated_at timestamptz not null default now()
 );
 
+create unique index if not exists projects_single_featured_idx
+on projects (featured)
+where featured is true;
+
 create table if not exists skills (
   id uuid primary key default gen_random_uuid(),
   name text not null,
@@ -118,9 +122,9 @@ using (bucket_id = 'portfolio-assets');
 
 insert into profile (hero_headline, hero_subheadline, about, resume_url, featured_video_url, location)
 select
-  'AI Builder / Full-Stack Developer',
-  'I build production-minded internal tools, AI-assisted workflows, and full-stack apps with Next.js, TypeScript, Supabase, OpenAI, and local AI systems.',
-  'I specialize in rapid prototyping, practical automation, and clean full-stack implementation. I use AI tools heavily, but I stay comfortable reading, modifying, and debugging code manually when the tools stop short.',
+  'Two Pixels Short',
+  'A small AI software studio building internal tools, rapid prototypes, automation workflows, and full-stack web apps.',
+  'Two Pixels Short is led by Chris Martindale, an AI Builder and Full-Stack Developer focused on rapid prototyping, practical automation, and clean implementation. AI tools are part of the workflow, but the work stays grounded in manual code review, debugging, and production-minded engineering.',
   '',
   '',
   'United States'

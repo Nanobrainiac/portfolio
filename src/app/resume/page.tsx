@@ -7,8 +7,8 @@ export default async function ResumePage() {
     <section className="mx-auto max-w-6xl px-4 py-8">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-sm font-medium text-emerald-300">Resume</p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight">Chris Martindale Resume</h1>
+          <p className="text-sm font-medium text-orange-300">Builder Resume</p>
+          <h1 className="mt-2 text-3xl font-semibold tracking-tight">Chris Martindale</h1>
         </div>
         {profile.resume_url ? (
           <a

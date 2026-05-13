@@ -1,6 +1,6 @@
-# Chris Martindale Portfolio
+# Two Pixels Short Studio Site
 
-Production-ready personal portfolio built with Next.js App Router, TypeScript, Tailwind CSS, Clerk, Supabase, and Vercel.
+Production-ready studio and portfolio site built with Next.js App Router, TypeScript, Tailwind CSS, Clerk, Supabase, and Vercel.
 
 ## Setup
 

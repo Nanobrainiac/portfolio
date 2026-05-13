@@ -10,7 +10,12 @@ export async function getPortfolioData(): Promise<PortfolioData> {
 
   const [profileRes, projectsRes, skillsRes, workRes, linksRes] = await Promise.all([
     supabase.from("profile").select("*").order("updated_at", { ascending: false }).limit(1).maybeSingle(),
-    supabase.from("projects").select("*").order("sort_order"),
+    supabase
+      .from("projects")
+      .select("*")
+      .order("featured", { ascending: false })
+      .order("sort_order")
+      .order("updated_at", { ascending: false }),
     supabase.from("skills").select("*").order("sort_order"),
     supabase.from("work_history").select("*").order("sort_order"),
     supabase.from("links").select("*").order("sort_order"),

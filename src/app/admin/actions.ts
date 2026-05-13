@@ -66,6 +66,11 @@ export async function saveProject(formData: FormData) {
   });
 
   const { id, ...payload } = parsed;
+  if (payload.featured) {
+    const { error } = await supabase.from("projects").update({ featured: false }).eq("featured", true);
+    if (error) throw new Error(error.message);
+  }
+
   const result = id
     ? await supabase.from("projects").update(payload).eq("id", id)
     : await supabase.from("projects").insert(payload);

@@ -19,7 +19,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="flex items-start justify-between gap-4">
         <h3 className="text-xl font-semibold">{project.title}</h3>
         {project.featured ? (
-          <span className="rounded-full border border-emerald-400/30 px-2 py-1 text-xs text-emerald-300">
+          <span className="rounded-full border border-orange-400/30 px-2 py-1 text-xs text-orange-200">
             Featured
           </span>
         ) : null}

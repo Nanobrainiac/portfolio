@@ -6,10 +6,22 @@ export default async function AboutPage() {
 
   return (
     <>
-      <Section title="About" eyebrow="Background">
-        <p className="max-w-3xl leading-8 text-zinc-300">{profile.about}</p>
+      <Section title="About Two Pixels Short" eyebrow="Studio">
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <div className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/2ps logo.png" alt="Two Pixels Short" className="w-full" />
+          </div>
+          <div>
+            <p className="leading-8 text-zinc-300">
+              Two Pixels Short is a small AI software studio focused on practical internal tools,
+              rapid prototypes, automation workflows, and full-stack web applications.
+            </p>
+            <p className="mt-5 leading-8 text-zinc-300">{profile.about}</p>
+          </div>
+        </div>
       </Section>
-      <Section title="Experience">
+      <Section title="Builder Experience">
         <div className="grid gap-4">
           {workHistory.map((item) => (
             <article key={item.id} className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
@@ -25,7 +37,7 @@ export default async function AboutPage() {
           ))}
         </div>
       </Section>
-      <Section title="Skills">
+      <Section title="Capabilities">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {skills.map((skill) => (
             <div key={skill.id} className="rounded-md border border-white/10 px-3 py-2">

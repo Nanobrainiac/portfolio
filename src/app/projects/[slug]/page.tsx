@@ -8,7 +8,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   return (
     <article className="mx-auto max-w-4xl px-4 py-16">
-      <p className="text-sm font-medium text-emerald-300">Project</p>
+      <p className="text-sm font-medium text-orange-300">Two Pixels Short Work</p>
       <h1 className="mt-3 text-4xl font-semibold tracking-tight">{project.title}</h1>
       <p className="mt-5 text-lg leading-8 text-zinc-300">{project.description}</p>
       {project.screenshot_url ? (

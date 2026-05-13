@@ -4,8 +4,8 @@ import { ClerkProvider, Show, UserButton } from "@clerk/nextjs";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Chris Martindale | AI Builder / Full-Stack Developer",
-  description: "AI-assisted full-stack development, internal tools, and rapid prototyping portfolio.",
+  title: "Two Pixels Short | AI Software Studio",
+  description: "AI-assisted software studio building internal tools, prototypes, automation, and full-stack web apps.",
 };
 
 export default function RootLayout({
@@ -22,11 +22,16 @@ export default function RootLayout({
         <ClerkProvider>
           <header className="sticky top-0 z-50 border-b border-white/10 bg-zinc-950/85 backdrop-blur">
             <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-              <Link href="/" className="font-semibold tracking-tight">
-                Chris Martindale
+              <Link href="/" className="flex items-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/2ps logo.png"
+                  alt="Two Pixels Short"
+                  className="h-9 w-auto sm:h-10"
+                />
               </Link>
               <div className="flex items-center gap-4 text-sm text-zinc-300">
-                <Link href="/projects" className="hover:text-white">Projects</Link>
+                <Link href="/projects" className="hover:text-white">Work</Link>
                 <Link href="/about" className="hover:text-white">About</Link>
                 <Link href="/contact" className="hover:text-white">Contact</Link>
                 <Show when="signed-in">
@@ -39,7 +44,7 @@ export default function RootLayout({
           <main>{children}</main>
           <footer className="border-t border-white/10">
             <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-zinc-500">
-              Built with Next.js, Clerk, Supabase, and Vercel.
+              Two Pixels Short builds practical AI-powered software, internal tools, and prototypes.
             </div>
           </footer>
         </ClerkProvider>
