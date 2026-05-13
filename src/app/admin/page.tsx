@@ -11,7 +11,6 @@ import {
   saveWorkItem,
   updateProfile,
 } from "./actions";
-import { AdminTabs } from "./admin-tabs";
 
 function inputClass() {
   return "w-full rounded-md border border-white/10 bg-zinc-900 px-3 py-2 text-sm outline-none focus:border-orange-400";
@@ -33,6 +32,36 @@ function isUuid(id: string | undefined) {
   return Boolean(id?.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i));
 }
 
+const tabs = [
+  { id: "profile", label: "Profile" },
+  { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
+  { id: "skills", label: "Skills" },
+  { id: "links", label: "Links" },
+];
+
+function AdminTabNav({ activeTab }: { activeTab: string }) {
+  return (
+    <div className="sticky top-[73px] z-40 mb-6 border-b border-white/10 bg-zinc-950/95 py-3 backdrop-blur">
+      <div className="flex gap-2 overflow-x-auto">
+        {tabs.map((tab) => (
+          <a
+            key={tab.id}
+            href={`/admin?tab=${tab.id}`}
+            className={`rounded-md px-3 py-2 text-sm font-medium ${
+              activeTab === tab.id
+                ? "bg-orange-500 text-zinc-950"
+                : "border border-white/10 text-zinc-300 hover:bg-white/10 hover:text-white"
+            }`}
+          >
+            {tab.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default async function AdminPage({
   searchParams,
 }: {
@@ -40,6 +69,7 @@ export default async function AdminPage({
 }) {
   await auth.protect();
   const { tab } = await searchParams;
+  const activeTab = tabs.some((item) => item.id === tab) && tab ? tab : "profile";
   const { profile, projects, skills, workHistory, links } = await getPortfolioData();
   const missingSupabase = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY;
   const persistedProjects = projects.filter((project) => isUuid(project.id));
@@ -59,7 +89,9 @@ export default async function AdminPage({
         ) : null}
       </div>
 
-      <AdminTabs initialTab={tab}>
+      <AdminTabNav activeTab={activeTab} />
+
+      {activeTab === "profile" ? (
       <section id="profile" className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
         <h2 className="text-xl font-semibold">Profile</h2>
         <form action={updateProfile} className="mt-5 grid gap-4">
@@ -75,8 +107,10 @@ export default async function AdminPage({
           <div><Button>Save profile</Button></div>
         </form>
       </section>
+      ) : null}
 
-      <section id="projects" className="mt-8 rounded-lg border border-white/10 bg-white/[0.03] p-5">
+      {activeTab === "projects" ? (
+      <section id="projects" className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
         <h2 className="text-xl font-semibold">Projects</h2>
         <div className="mt-5 grid gap-5">
           {[...projects, null].map((project, index) => (
@@ -110,8 +144,10 @@ export default async function AdminPage({
           ))}
         </div>
       </section>
+      ) : null}
 
-      <section id="experience" className="mt-8 rounded-lg border border-white/10 bg-white/[0.03] p-5">
+      {activeTab === "experience" ? (
+      <section id="experience" className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
         <h2 className="text-xl font-semibold">Experience</h2>
         <div className="mt-5 grid gap-5">
           {[...workHistory, null].map((item, index) => (
@@ -136,7 +172,9 @@ export default async function AdminPage({
           ))}
         </div>
       </section>
+      ) : null}
 
+      {activeTab === "skills" ? (
       <section id="skills" className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
           <h2 className="text-xl font-semibold">Skills</h2>
           <div className="mt-5 grid gap-3">
@@ -157,7 +195,9 @@ export default async function AdminPage({
             ))}
           </div>
       </section>
+      ) : null}
 
+      {activeTab === "links" ? (
       <section id="links" className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
           <h2 className="text-xl font-semibold">Links</h2>
           <div className="mt-5 grid gap-3">
@@ -178,7 +218,7 @@ export default async function AdminPage({
             ))}
           </div>
       </section>
-      </AdminTabs>
+      ) : null}
     </div>
   );
 }
