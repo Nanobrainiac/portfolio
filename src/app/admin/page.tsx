@@ -85,7 +85,7 @@ export default async function AdminPage() {
               <div className="grid gap-3 md:grid-cols-2">
                 <label>{label("Tech stack, comma-separated")}<input name="tech_stack" defaultValue={project?.tech_stack.join(", ") ?? ""} className={inputClass()} /></label>
                 <label>{label("Screenshot URL")}<input name="screenshot_url" defaultValue={project?.screenshot_url ?? ""} className={inputClass()} /></label>
-                <label>{label("Live demo URL")}<input name="live_demo_url" defaultValue={project?.live_demo_url ?? ""} className={inputClass()} /></label>
+                <label>{label("Live site URL")}<input name="live_demo_url" defaultValue={project?.live_demo_url ?? ""} className={inputClass()} /></label>
                 <label>{label("GitHub URL")}<input name="github_url" defaultValue={project?.github_url ?? ""} className={inputClass()} /></label>
                 <label>{label("Video URL")}<input name="video_url" defaultValue={project?.video_url ?? ""} className={inputClass()} /></label>
                 <label className="flex items-end gap-2 text-sm text-zinc-300"><input type="checkbox" name="featured" defaultChecked={project?.featured ?? false} /> Featured</label>

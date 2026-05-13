@@ -32,7 +32,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         {project.long_description ?? project.description}
       </div>
       <div className="mt-8 flex flex-wrap gap-4 text-sm">
-        {project.live_demo_url ? <a href={project.live_demo_url}>Live demo</a> : null}
+        {project.live_demo_url ? <a href={project.live_demo_url}>Live site</a> : null}
         {project.github_url ? <a href={project.github_url}>GitHub</a> : null}
         {project.video_url ? <a href={project.video_url}>Video</a> : null}
       </div>

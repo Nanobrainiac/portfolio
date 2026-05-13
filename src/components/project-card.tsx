@@ -36,7 +36,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <Link href={`/projects/${project.slug}`} className="text-white underline-offset-4 hover:underline">
           Case study
         </Link>
-        {project.live_demo_url ? <a href={project.live_demo_url}>Live demo</a> : null}
+        {project.live_demo_url ? <a href={project.live_demo_url}>Live site</a> : null}
         {project.github_url ? <a href={project.github_url}>GitHub</a> : null}
         {project.video_url ? <a href={project.video_url}>Video</a> : null}
       </div>
