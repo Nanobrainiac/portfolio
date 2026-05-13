@@ -11,6 +11,7 @@ import {
   saveWorkItem,
   updateProfile,
 } from "./actions";
+import { AdminTabs } from "./admin-tabs";
 
 function inputClass() {
   return "w-full rounded-md border border-white/10 bg-zinc-900 px-3 py-2 text-sm outline-none focus:border-orange-400";
@@ -32,8 +33,13 @@ function isUuid(id: string | undefined) {
   return Boolean(id?.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i));
 }
 
-export default async function AdminPage() {
+export default async function AdminPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tab?: string }>;
+}) {
   await auth.protect();
+  const { tab } = await searchParams;
   const { profile, projects, skills, workHistory, links } = await getPortfolioData();
   const missingSupabase = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY;
   const persistedProjects = projects.filter((project) => isUuid(project.id));
@@ -53,7 +59,8 @@ export default async function AdminPage() {
         ) : null}
       </div>
 
-      <section className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
+      <AdminTabs initialTab={tab}>
+      <section id="profile" className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
         <h2 className="text-xl font-semibold">Profile</h2>
         <form action={updateProfile} className="mt-5 grid gap-4">
           <input type="hidden" name="id" defaultValue={isUuid(profile.id) ? profile.id : ""} />
@@ -130,8 +137,7 @@ export default async function AdminPage() {
         </div>
       </section>
 
-      <section id="skills" className="mt-8 grid gap-8 lg:grid-cols-2">
-        <div className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
+      <section id="skills" className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
           <h2 className="text-xl font-semibold">Skills</h2>
           <div className="mt-5 grid gap-3">
             {[...skills, null].map((skill, index) => (
@@ -150,9 +156,9 @@ export default async function AdminPage() {
               </form>
             ))}
           </div>
-        </div>
+      </section>
 
-        <div id="links" className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
+      <section id="links" className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
           <h2 className="text-xl font-semibold">Links</h2>
           <div className="mt-5 grid gap-3">
             {[...links, null].map((linkItem, index) => (
@@ -171,8 +177,8 @@ export default async function AdminPage() {
               </form>
             ))}
           </div>
-        </div>
       </section>
+      </AdminTabs>
     </div>
   );
 }

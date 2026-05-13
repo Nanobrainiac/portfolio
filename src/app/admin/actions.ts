@@ -45,7 +45,7 @@ export async function updateProfile(formData: FormData) {
     : await supabase.from("profile").insert(updates);
   if (result.error) throw new Error(result.error.message);
   refresh();
-  redirect("/admin");
+  redirect("/admin?tab=profile");
 }
 
 export async function saveProject(formData: FormData) {
@@ -76,7 +76,7 @@ export async function saveProject(formData: FormData) {
     : await supabase.from("projects").insert(payload);
   if (result.error) throw new Error(result.error.message);
   refresh();
-  redirect("/admin#projects");
+  redirect("/admin?tab=projects");
 }
 
 export async function deleteProject(formData: FormData) {
@@ -85,7 +85,7 @@ export async function deleteProject(formData: FormData) {
   const { error } = await supabase.from("projects").delete().eq("id", id);
   if (error) throw new Error(error.message);
   refresh();
-  redirect("/admin#projects");
+  redirect("/admin?tab=projects");
 }
 
 export async function saveSkill(formData: FormData) {
@@ -102,7 +102,7 @@ export async function saveSkill(formData: FormData) {
     : await supabase.from("skills").insert(payload);
   if (result.error) throw new Error(result.error.message);
   refresh();
-  redirect("/admin#skills");
+  redirect("/admin?tab=skills");
 }
 
 export async function deleteSkill(formData: FormData) {
@@ -110,7 +110,7 @@ export async function deleteSkill(formData: FormData) {
   const { error } = await supabase.from("skills").delete().eq("id", String(value(formData, "id")));
   if (error) throw new Error(error.message);
   refresh();
-  redirect("/admin#skills");
+  redirect("/admin?tab=skills");
 }
 
 export async function saveWorkItem(formData: FormData) {
@@ -130,7 +130,7 @@ export async function saveWorkItem(formData: FormData) {
     : await supabase.from("work_history").insert(payload);
   if (result.error) throw new Error(result.error.message);
   refresh();
-  redirect("/admin#experience");
+  redirect("/admin?tab=experience");
 }
 
 export async function deleteWorkItem(formData: FormData) {
@@ -138,7 +138,7 @@ export async function deleteWorkItem(formData: FormData) {
   const { error } = await supabase.from("work_history").delete().eq("id", String(value(formData, "id")));
   if (error) throw new Error(error.message);
   refresh();
-  redirect("/admin#experience");
+  redirect("/admin?tab=experience");
 }
 
 export async function saveLink(formData: FormData) {
@@ -155,7 +155,7 @@ export async function saveLink(formData: FormData) {
     : await supabase.from("links").insert(payload);
   if (result.error) throw new Error(result.error.message);
   refresh();
-  redirect("/admin#links");
+  redirect("/admin?tab=links");
 }
 
 export async function deleteLink(formData: FormData) {
@@ -163,5 +163,5 @@ export async function deleteLink(formData: FormData) {
   const { error } = await supabase.from("links").delete().eq("id", String(value(formData, "id")));
   if (error) throw new Error(error.message);
   refresh();
-  redirect("/admin#links");
+  redirect("/admin?tab=links");
 }
