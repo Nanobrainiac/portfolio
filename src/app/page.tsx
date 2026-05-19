@@ -45,8 +45,7 @@ export default async function Home() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/2ps logo.png" alt="Two Pixels Short" className="w-72 max-w-full sm:w-96" />
                 <p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-300">
-                  A small AI software studio building internal tools, rapid prototypes,
-                  automation workflows, and full-stack web apps.
+                  I build working prototypes, MVPs, internal tools, and automation systems fast — often in hours to a few days instead of weeks. Not mockups. Not vague strategy. Usable software you can test, demo, refine, and launch.
                 </p>
               </div>
               <div className="max-w-sm border-l border-orange-400/40 pl-5">
@@ -54,7 +53,7 @@ export default async function Home() {
                   Studio focus
                 </p>
                 <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                  Useful software, built fast enough to matter.
+                  Rapid MVP Development for Web & Android Apps
                 </h1>
               </div>
             </div>
@@ -84,7 +83,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <Section title="Studio Services" eyebrow="What we build">
+      <Section title="What I Build Fast" eyebrow="My Services">
         <div className="grid gap-4 md:grid-cols-3">
           {services.map((service) => (
             <article key={service.title} className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
