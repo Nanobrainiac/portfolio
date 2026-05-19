@@ -103,8 +103,11 @@ export default async function Home() {
       </Section>
 
       {featured ? (
-        <Section title="Selected Work" eyebrow="Portfolio">
+        <Section title="Featured Work" eyebrow="Portfolio">
           <ProjectCard project={featured} />
+          <Link href="/projects" className="rounded-md bg-orange-500 px-4 py-2 text-sm font-semibold text-zinc-950 hover:bg-orange-400">
+              View More
+            </Link>
         </Section>
       ) : null}
 
