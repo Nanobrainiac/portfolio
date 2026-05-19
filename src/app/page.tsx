@@ -5,16 +5,24 @@ import { getPortfolioData } from "@/lib/data";
 
 const services = [
   {
-    title: "AI workflow tools",
-    text: "Custom interfaces for research, summarization, document workflows, internal knowledge, and decision support.",
+    title: "Web App MVPs",
+    text: "Functional web applications with real user flows, dashboards, authentication, databases, admin panels, and deployment-ready foundations.",
   },
   {
-    title: "Full-stack prototypes",
-    text: "Fast, usable Next.js and TypeScript builds that can prove an idea, support a team, or grow into production.",
+    title: "Android App Prototypes",
+    text: "Fast Android prototypes for testing app ideas, workflows, interfaces, and mobile-first product concepts before committing to a full build.",
   },
   {
-    title: "Internal applications",
-    text: "Dashboards, repositories, admin tools, and automation systems built around how your work actually gets done.",
+    title: "Internal Tools & Automation",
+    text: "Custom tools that replace spreadsheets, manual workflows, repeated tasks, and scattered business processes with usable software.",
+  },
+  {
+    title: "AI-Assisted Product Builds",
+    text: "Rapidly developed software using modern AI-assisted development workflows, while still applying hands-on debugging, product thinking, and clean implementation.",
+  },
+  {
+    title: "Proof-of-Concept Builds",
+    text: "Clickable, working software to validate an idea, pitch a concept, demonstrate a workflow, or prove that something can be built.",
   },
 ];
 
